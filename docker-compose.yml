@@ -1,18 +1,17 @@
 version: '3'
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
     ports:
       - 9200:9200
     volumes:
       - ./docker/elasticsearch/data:/usr/share/elasticsearch/data
       - ./docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./docker/elasticsearch/config/sample.dic:/usr/share/elasticsearch/config/sample.dic
     networks: [elastic]
     environment:
       - discovery.type=single-node
   kibana:
-    image: docker.elastic.co/kibana/kibana-oss:6.3.2
+    image: docker.elastic.co/kibana/kibana-oss:7.3.0
     ports:
       - 5601:5601
     networks: [elastic]
